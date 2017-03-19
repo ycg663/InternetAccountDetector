@@ -16,6 +16,7 @@ You need to install following go packages
 
 ## Usage
 ```
+selenium-server -port 4444
 Usage of InternetAccountDetector:
   -alsologtostderr
     	log to standard error as well as files
