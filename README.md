@@ -12,7 +12,7 @@
 You need to install following go packages 
 - go get "sourcegraph.com/sourcegraph/go-selenium"
 - go get "github.com/golang/glog"
-- go build InternetAccountDetector.go
+- Then go build InternetAccountDetector.go
 
 ## Usage
 ```

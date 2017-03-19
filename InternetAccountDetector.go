@@ -1,25 +1,26 @@
 package main
 
 import (
+	"flag"
+	"runtime"
+	"strconv"
 	"strings"
 	"time"
-	"strconv"
-	"runtime"
-	"flag"
 
-	"sourcegraph.com/sourcegraph/go-selenium"
 	"github.com/golang/glog"
+	"sourcegraph.com/sourcegraph/go-selenium"
 )
 
 const (
 	DefaultPassword = "ucas"
-	DefaultUrl = "http://www.baidu.com"
+	DefaultUrl      = "http://www.baidu.com"
 )
 
 var (
 	StartUserName string
-	MaxTryCnt int
+	MaxTryCnt     int
 )
+
 type Detector struct {
 	webDriver selenium.WebDriver
 }
@@ -75,7 +76,6 @@ func (self *Detector) Detect(startUserName string) error {
 		}
 	}
 
-
 	for i := 0; i < MaxTryCnt; i++ {
 
 		self.webDriver.ExecuteScriptAsync("document.getElementById('username').style.display='inline-block';", []interface{}{})
@@ -94,7 +94,7 @@ func (self *Detector) Detect(startUserName string) error {
 
 		userNameEle.Clear()
 		time.Sleep(time.Second)
-		var username  = ""
+		var username = ""
 		if suffix != "" {
 			curSuffix := strconv.Itoa(int(suffixNumber))
 			username = prefix + "E" + curSuffix
