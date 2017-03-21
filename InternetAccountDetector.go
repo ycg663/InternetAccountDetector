@@ -141,10 +141,13 @@ func main() {
 
 	runtime.GOMAXPROCS(runtime.NumCPU())
 
-	StartUserName = *(flag.String("start_user", "2014E8008744100", ""))
-	MaxTryCnt = *(flag.Int("max_cnt", 500, "the number of accounts will try"))
+	var Start = flag.String("start_user", "2014E8008744100", "")
+	var TryCnt = flag.Int("max_cnt", 500, "the number of accounts will try")
 
 	flag.Parse()
+
+	StartUserName = *Start
+	MaxTryCnt = *TryCnt
 
 	detector := NewDetector("chrome", "http://127.0.0.1:4444/wd/hub", 1000)
 	if detector == nil {
